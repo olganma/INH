@@ -33,9 +33,21 @@ class ProductManagerTest {
     }
 
     @Test
-    public void ShouldSearch() {
+    public void ShouldSearchOne() {
+        Product[] expected = {book2};
+        Product[] actual = manager.searchBy("Собачье");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void ShouldSearchFew() {
         Product[] expected = {book2, book3};
         Product[] actual = manager.searchBy("сердце");
+        Assertions.assertArrayEquals(expected, actual);
+    }
+    @Test
+    public void ShouldSearchNone() {
+        Product[] expected = {};
+        Product[] actual = manager.searchBy("Человек");
         Assertions.assertArrayEquals(expected, actual);
     }
 
